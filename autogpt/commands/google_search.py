@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 from typing import TYPE_CHECKING
 
-
 from duckduckgo_search import ddg
 
 from autogpt.commands.command import command
