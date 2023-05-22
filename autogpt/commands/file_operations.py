@@ -12,6 +12,7 @@ from colorama import Back, Fore
 from requests.adapters import HTTPAdapter, Retry
 
 from autogpt.commands.command import command
+from autogpt.commands.file_operations_utils import read_textual_file
 from autogpt.logs import logger
 from autogpt.spinner import Spinner
 from autogpt.utils import readable_file_size
@@ -157,12 +158,10 @@ def read_file(filename: str, config: Config) -> str:
         str: The contents of the file
     """
     try:
-        charset_match = charset_normalizer.from_path(filename).best()
-        encoding = charset_match.encoding
-        logger.debug(f"Read file '{filename}' with encoding '{encoding}'")
-        return str(charset_match)
-    except Exception as err:
-        return f"Error: {err}"
+        content = read_textual_file(filename, logger)
+        return content
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 
 def ingest_file(
