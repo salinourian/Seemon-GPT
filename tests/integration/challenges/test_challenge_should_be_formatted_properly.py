@@ -12,6 +12,7 @@ CHALLENGES_DIR = os.path.join(
 
 def get_python_files(directory: str, exclude_file: str) -> List[str]:
     """Recursively get all python files in a directory and subdirectories."""
+    # dummy change
     python_files: List[str] = []
     for root, dirs, files in os.walk(directory):
         for file in files:
