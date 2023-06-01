@@ -118,7 +118,7 @@ jobs:
           --head "${{ github.repository_owner }}:${{ env.NEW_BRANCH }}" \
           --base "${{ github.event.pull_request.user.login }}:${{ github.event.pull_request.head.ref }}" \
           --body "This pull request updates the current score of Auto-GPT. Please check the files changed and merge the pull request." \
-          --repo ${{ github.repository }}
+          --repo ${{ github.event.pull_request.head.repo.full_name }}
 
       - name: Make some changes
         run: |
